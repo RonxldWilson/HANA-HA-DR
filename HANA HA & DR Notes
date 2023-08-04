@@ -1,0 +1,86 @@
+HANA High Availability  & Disaster Recovery
+
+#########################################################
+SAP 
+
+Schema in HANA Database is SAP HANA DB is the Schema
+#########################################################
+
+#Overview
+
+SAP Implementation – SAP HANA High Availability & Disaster Recovery
+Introduction
+Overview
+HA Architecture
+HA & DR Setup options
+High Availability – Guiding Principles
+High Availability – Single Point of Failure
+SAP HANA References
+
+#########################################################
+
+What is High Availability?
+
+Availability is defined as a measure of a system’s operational continuity, which is 
+expressed as a percentage of time, inversely proportional to downtime.
+
+Fault Recovery is the process of recovery and resuming system operations after an 
+outage in the data center due to a fault.
+
+Downtime is the consequence of outages, which may be planned (e.g. system upgrades) 
+or unplanned (e.g. power failures, natural disasters),and brings down the data center 
+operations.
+
+Disaster Recovery is the process of  recovering operations after an outage due to a
+prolonged data center or site failure, which requires preparations to back up data 
+over long distances
+
+#########################################################
+High Availability - Overview
+
+Recovery Point Objective (RPO) is the maximum tolerable period of time during which operational data is lost without the ability to recover.
+
+Recovery Time Objective (RTO) is the maximum permissible time it takes to recover the system after an outage for operations to resume.
+
+As an in-memory database platform: 
+SAP HANA maintains the reliability of its data in the event of failures. It resumes operations with most of the data loaded back in memory
+as quickly as possible in order to meet the RTO objectives.
+
+Mission-critical application systems are expected to operate with an RPO of zero data loss in the case of local faults or disasters etc.
+In order to achieve zero RPO and low RTO, data must be replicated synchronously over longer distances, which impacts regular system 
+performance and may require more expensive standby and failover solutions.
+
+All of this leads to tradeoff decisions around the attributes of fault recovery functionality, cost, and complexity.
+#########################################################
+SAP HANA platform supports the following high availability measures:
+
+#System availability support:
+    Host auto-failover: Automatic failover from crashed host to standby host in the same system
+    Storage replication: Continuous replication (mirroring) between primary storage and backup storage over a network (may be synchronous)
+    System replication: Continuous update of secondary systems by primary system, including in-memory table loading
+#Fault recovery support:
+    Service auto-restart: Automatic restart of stopped services on host (watchdog)
+    Host auto-failover: Automatic failover from crashed host to standby host in the same system
+    System replication: Continuous update of secondary systems by primary system, including in-memory table loading
+#Disaster recovery support:
+    Storage replication: Continuous replication (mirroring) between primary storage and backup storage over a network (may be synchronous)
+    System replication: Continuous update of secondary systems by primary system, including in-memory table loading
+    Backups: Periodic saving of database copies in safe place
+
+#########################################################
+STONITH - Shoot The Other Node In The Head
+
+
+References:
+
+Introduction to High Availability for SAP HANA:  https://scn.sap.com/docs/DOC-65585 
+SAP HANA Host Auto-Failover: http://scn.sap.com/docs/DOC-62494 
+SAP HANA system replication: https://scn.sap.com/docs/DOC-63221 
+SAP HANA Network Requirements: https://scn.sap.com/docs/DOC-63221 
+
+
+
+
+
+
+
